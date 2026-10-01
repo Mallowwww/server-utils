@@ -27,6 +27,25 @@ sourceSets.main.resources {
 
 repositories {
     // Add here additional repositories if required by some of the dependencies below.
+    maven {
+        name = 'NeoForged'
+        url = 'https://maven.neoforged.net/releases'
+    }
+    maven { url 'https://maven.kosmx.dev/' }
+    maven { url 'https://maven.shedaniel.me/' }
+    maven {
+        name = 'Modrinth'
+        url = 'https://api.modrinth.com/maven'
+        content {
+            includeGroup 'maven.modrinth'
+        }
+    }
+
+    // For Curios
+    maven { url 'https://maven.theillusivec4.top/' }
+    maven { url 'https://maven.fabricmc.net' }
+
+    mavenLocal()
 }
 
 base {
@@ -97,6 +116,17 @@ configurations {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    implementation ("top.theillusivec4.curios:curios-neoforge:${project.curios_version}")
+
+    implementation "maven.modrinth:bundle-api:${project.bundle_api_version}-neoforge"
+    implementation("maven.modrinth:structure-pool-api:${project.structure_pool_api_version}-neoforge")
+    implementation("maven.modrinth:ranged-weapon-api:${project.ranged_weapon_api_version}-neoforge")
+    implementation("maven.modrinth:spell-power:${project.spell_power_version}-neoforge")
+    implementation("maven.modrinth:spell-engine:${project.spell_engine_version}-neoforge")
+    implementation("dev.kosmx.player-anim:player-animation-lib-forge:${project.player_anim_version}")
+    implementation("me.shedaniel.cloth:cloth-config-neoforge:${project.cloth_config_version}")
+    implementation("maven.modrinth:armor-model-api:${project.armor_model_api_version}-neoforge")
+    implementation("maven.modrinth:tiny-config:${project.tiny_config_version}-neoforge")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
