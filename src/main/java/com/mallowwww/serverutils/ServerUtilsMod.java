@@ -1,5 +1,6 @@
 package com.mallowwww.serverutils;
 
+import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -43,8 +44,12 @@ public class ServerUtilsMod {
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(FMLCommonSetupEvent event) {
+    public static ResourceLocation path(String s) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, s);
+    }
 
+    private void commonSetup(FMLCommonSetupEvent event) {
+        
     }
 
     @SubscribeEvent
